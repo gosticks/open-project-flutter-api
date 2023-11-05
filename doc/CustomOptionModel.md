@@ -1,0 +1,17 @@
+# openapi.model.CustomOptionModel
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** | The identifier | [optional] [readonly] 
+**value** | **String** | The value defined for this custom option | [optional] [readonly] 
+**links** | [**CustomOptionModelLinks**](CustomOptionModelLinks.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
