@@ -22,18 +22,20 @@ class WeekDayCollectionWriteModel {
   WeekDayCollectionWriteModelEmbedded embedded;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WeekDayCollectionWriteModel &&
-    other.type == type &&
-    other.embedded == embedded;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WeekDayCollectionWriteModel &&
+          other.type == type &&
+          other.embedded == embedded;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (embedded.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) + (embedded.hashCode);
 
   @override
-  String toString() => 'WeekDayCollectionWriteModel[type=$type, embedded=$embedded]';
+  String toString() =>
+      'WeekDayCollectionWriteModel[type=$type, embedded=$embedded]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -42,7 +44,7 @@ class WeekDayCollectionWriteModel {
     } else {
       json[r'_type'] = null;
     }
-      json[r'_embedded'] = this.embedded;
+    json[r'_embedded'] = this.embedded;
     return json;
   }
 
@@ -58,21 +60,27 @@ class WeekDayCollectionWriteModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WeekDayCollectionWriteModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WeekDayCollectionWriteModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "WeekDayCollectionWriteModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "WeekDayCollectionWriteModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return WeekDayCollectionWriteModel(
-        type: Object.fromJson(json[r'_type']),
-        embedded: WeekDayCollectionWriteModelEmbedded.fromJson(json[r'_embedded'])!,
+        type: WeekDayCollectionWriteModelTypeEnum.fromJson(json[r'_type']),
+        embedded:
+            WeekDayCollectionWriteModelEmbedded.fromJson(json[r'_embedded'])!,
       );
     }
     return null;
   }
 
-  static List<WeekDayCollectionWriteModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WeekDayCollectionWriteModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <WeekDayCollectionWriteModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -100,13 +108,19 @@ class WeekDayCollectionWriteModel {
   }
 
   // maps a json object with a list of WeekDayCollectionWriteModel-objects as value to a dart map
-  static Map<String, List<WeekDayCollectionWriteModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<WeekDayCollectionWriteModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<WeekDayCollectionWriteModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WeekDayCollectionWriteModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WeekDayCollectionWriteModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -118,7 +132,6 @@ class WeekDayCollectionWriteModel {
     '_embedded',
   };
 }
-
 
 class WeekDayCollectionWriteModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -139,9 +152,13 @@ class WeekDayCollectionWriteModelTypeEnum {
     collection,
   ];
 
-  static WeekDayCollectionWriteModelTypeEnum? fromJson(dynamic value) => WeekDayCollectionWriteModelTypeEnumTypeTransformer().decode(value);
+  static WeekDayCollectionWriteModelTypeEnum? fromJson(dynamic value) =>
+      WeekDayCollectionWriteModelTypeEnumTypeTransformer().decode(value);
 
-  static List<WeekDayCollectionWriteModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WeekDayCollectionWriteModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <WeekDayCollectionWriteModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -158,7 +175,8 @@ class WeekDayCollectionWriteModelTypeEnum {
 /// Transformation class that can [encode] an instance of [WeekDayCollectionWriteModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [WeekDayCollectionWriteModelTypeEnum].
 class WeekDayCollectionWriteModelTypeEnumTypeTransformer {
-  factory WeekDayCollectionWriteModelTypeEnumTypeTransformer() => _instance ??= const WeekDayCollectionWriteModelTypeEnumTypeTransformer._();
+  factory WeekDayCollectionWriteModelTypeEnumTypeTransformer() => _instance ??=
+      const WeekDayCollectionWriteModelTypeEnumTypeTransformer._();
 
   const WeekDayCollectionWriteModelTypeEnumTypeTransformer._();
 
@@ -172,10 +190,12 @@ class WeekDayCollectionWriteModelTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  WeekDayCollectionWriteModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  WeekDayCollectionWriteModelTypeEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Collection': return WeekDayCollectionWriteModelTypeEnum.collection;
+        case 'Collection':
+          return WeekDayCollectionWriteModelTypeEnum.collection;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -188,5 +208,3 @@ class WeekDayCollectionWriteModelTypeEnumTypeTransformer {
   /// Singleton [WeekDayCollectionWriteModelTypeEnumTypeTransformer] instance.
   static WeekDayCollectionWriteModelTypeEnumTypeTransformer? _instance;
 }
-
-

@@ -107,56 +107,59 @@ class NotificationModelEmbeddedResource {
   WorkPackageModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is NotificationModelEmbeddedResource &&
-    other.id == id &&
-    other.lockVersion == lockVersion &&
-    other.subject == subject &&
-    other.type == type &&
-    other.description == description &&
-    other.scheduleManually == scheduleManually &&
-    other.readonly == readonly &&
-    other.startDate == startDate &&
-    other.dueDate == dueDate &&
-    other.date == date &&
-    other.derivedStartDate == derivedStartDate &&
-    other.derivedDueDate == derivedDueDate &&
-    other.duration == duration &&
-    other.estimatedTime == estimatedTime &&
-    other.derivedEstimatedTime == derivedEstimatedTime &&
-    other.ignoreNonWorkingDays == ignoreNonWorkingDays &&
-    other.spentTime == spentTime &&
-    other.percentageDone == percentageDone &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NotificationModelEmbeddedResource &&
+          other.id == id &&
+          other.lockVersion == lockVersion &&
+          other.subject == subject &&
+          other.type == type &&
+          other.description == description &&
+          other.scheduleManually == scheduleManually &&
+          other.readonly == readonly &&
+          other.startDate == startDate &&
+          other.dueDate == dueDate &&
+          other.date == date &&
+          other.derivedStartDate == derivedStartDate &&
+          other.derivedDueDate == derivedDueDate &&
+          other.duration == duration &&
+          other.estimatedTime == estimatedTime &&
+          other.derivedEstimatedTime == derivedEstimatedTime &&
+          other.ignoreNonWorkingDays == ignoreNonWorkingDays &&
+          other.spentTime == spentTime &&
+          other.percentageDone == percentageDone &&
+          other.createdAt == createdAt &&
+          other.updatedAt == updatedAt &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (lockVersion == null ? 0 : lockVersion!.hashCode) +
-    (subject == null ? 0 : subject!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (scheduleManually == null ? 0 : scheduleManually!.hashCode) +
-    (readonly == null ? 0 : readonly!.hashCode) +
-    (startDate == null ? 0 : startDate!.hashCode) +
-    (dueDate == null ? 0 : dueDate!.hashCode) +
-    (date == null ? 0 : date!.hashCode) +
-    (derivedStartDate == null ? 0 : derivedStartDate!.hashCode) +
-    (derivedDueDate == null ? 0 : derivedDueDate!.hashCode) +
-    (duration == null ? 0 : duration!.hashCode) +
-    (estimatedTime == null ? 0 : estimatedTime!.hashCode) +
-    (derivedEstimatedTime == null ? 0 : derivedEstimatedTime!.hashCode) +
-    (ignoreNonWorkingDays == null ? 0 : ignoreNonWorkingDays!.hashCode) +
-    (spentTime == null ? 0 : spentTime!.hashCode) +
-    (percentageDone == null ? 0 : percentageDone!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id == null ? 0 : id!.hashCode) +
+      (lockVersion == null ? 0 : lockVersion!.hashCode) +
+      (subject == null ? 0 : subject!.hashCode) +
+      (type == null ? 0 : type!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (scheduleManually == null ? 0 : scheduleManually!.hashCode) +
+      (readonly == null ? 0 : readonly!.hashCode) +
+      (startDate == null ? 0 : startDate!.hashCode) +
+      (dueDate == null ? 0 : dueDate!.hashCode) +
+      (date == null ? 0 : date!.hashCode) +
+      (derivedStartDate == null ? 0 : derivedStartDate!.hashCode) +
+      (derivedDueDate == null ? 0 : derivedDueDate!.hashCode) +
+      (duration == null ? 0 : duration!.hashCode) +
+      (estimatedTime == null ? 0 : estimatedTime!.hashCode) +
+      (derivedEstimatedTime == null ? 0 : derivedEstimatedTime!.hashCode) +
+      (ignoreNonWorkingDays == null ? 0 : ignoreNonWorkingDays!.hashCode) +
+      (spentTime == null ? 0 : spentTime!.hashCode) +
+      (percentageDone == null ? 0 : percentageDone!.hashCode) +
+      (createdAt == null ? 0 : createdAt!.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'NotificationModelEmbeddedResource[id=$id, lockVersion=$lockVersion, subject=$subject, type=$type, description=$description, scheduleManually=$scheduleManually, readonly=$readonly, startDate=$startDate, dueDate=$dueDate, date=$date, derivedStartDate=$derivedStartDate, derivedDueDate=$derivedDueDate, duration=$duration, estimatedTime=$estimatedTime, derivedEstimatedTime=$derivedEstimatedTime, ignoreNonWorkingDays=$ignoreNonWorkingDays, spentTime=$spentTime, percentageDone=$percentageDone, createdAt=$createdAt, updatedAt=$updatedAt, links=$links]';
+  String toString() =>
+      'NotificationModelEmbeddedResource[id=$id, lockVersion=$lockVersion, subject=$subject, type=$type, description=$description, scheduleManually=$scheduleManually, readonly=$readonly, startDate=$startDate, dueDate=$dueDate, date=$date, derivedStartDate=$derivedStartDate, derivedDueDate=$derivedDueDate, duration=$duration, estimatedTime=$estimatedTime, derivedEstimatedTime=$derivedEstimatedTime, ignoreNonWorkingDays=$ignoreNonWorkingDays, spentTime=$spentTime, percentageDone=$percentageDone, createdAt=$createdAt, updatedAt=$updatedAt, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -260,7 +263,7 @@ class NotificationModelEmbeddedResource {
     } else {
       json[r'updatedAt'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -276,8 +279,10 @@ class NotificationModelEmbeddedResource {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "NotificationModelEmbeddedResource[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "NotificationModelEmbeddedResource[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "NotificationModelEmbeddedResource[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "NotificationModelEmbeddedResource[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -286,7 +291,8 @@ class NotificationModelEmbeddedResource {
         id: mapValueOfType<Object>(json, r'id'),
         lockVersion: mapValueOfType<Object>(json, r'lockVersion'),
         subject: mapValueOfType<Object>(json, r'subject'),
-        type: Object.fromJson(json[r'_type']),
+        type:
+            NotificationModelEmbeddedResourceTypeEnum.fromJson(json[r'_type']),
         description: WorkPackageModelDescription.fromJson(json[r'description']),
         scheduleManually: mapValueOfType<Object>(json, r'scheduleManually'),
         readonly: mapValueOfType<Object>(json, r'readonly'),
@@ -297,8 +303,10 @@ class NotificationModelEmbeddedResource {
         derivedDueDate: mapValueOfType<Object>(json, r'derivedDueDate'),
         duration: mapValueOfType<Object>(json, r'duration'),
         estimatedTime: mapValueOfType<Object>(json, r'estimatedTime'),
-        derivedEstimatedTime: mapValueOfType<Object>(json, r'derivedEstimatedTime'),
-        ignoreNonWorkingDays: mapValueOfType<Object>(json, r'ignoreNonWorkingDays'),
+        derivedEstimatedTime:
+            mapValueOfType<Object>(json, r'derivedEstimatedTime'),
+        ignoreNonWorkingDays:
+            mapValueOfType<Object>(json, r'ignoreNonWorkingDays'),
         spentTime: mapValueOfType<Object>(json, r'spentTime'),
         percentageDone: mapValueOfType<Object>(json, r'percentageDone'),
         createdAt: mapValueOfType<Object>(json, r'createdAt'),
@@ -309,7 +317,10 @@ class NotificationModelEmbeddedResource {
     return null;
   }
 
-  static List<NotificationModelEmbeddedResource> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<NotificationModelEmbeddedResource> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <NotificationModelEmbeddedResource>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -322,7 +333,8 @@ class NotificationModelEmbeddedResource {
     return result.toList(growable: growable);
   }
 
-  static Map<String, NotificationModelEmbeddedResource> mapFromJson(dynamic json) {
+  static Map<String, NotificationModelEmbeddedResource> mapFromJson(
+      dynamic json) {
     final map = <String, NotificationModelEmbeddedResource>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
@@ -337,13 +349,19 @@ class NotificationModelEmbeddedResource {
   }
 
   // maps a json object with a list of NotificationModelEmbeddedResource-objects as value to a dart map
-  static Map<String, List<NotificationModelEmbeddedResource>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<NotificationModelEmbeddedResource>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<NotificationModelEmbeddedResource>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = NotificationModelEmbeddedResource.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = NotificationModelEmbeddedResource.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -355,7 +373,6 @@ class NotificationModelEmbeddedResource {
     '_links',
   };
 }
-
 
 class NotificationModelEmbeddedResourceTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -369,16 +386,21 @@ class NotificationModelEmbeddedResourceTypeEnum {
 
   Object toJson() => value;
 
-  static const workPackage = NotificationModelEmbeddedResourceTypeEnum._('WorkPackage');
+  static const workPackage =
+      NotificationModelEmbeddedResourceTypeEnum._('WorkPackage');
 
   /// List of all possible values in this [enum][NotificationModelEmbeddedResourceTypeEnum].
   static const values = <NotificationModelEmbeddedResourceTypeEnum>[
     workPackage,
   ];
 
-  static NotificationModelEmbeddedResourceTypeEnum? fromJson(dynamic value) => NotificationModelEmbeddedResourceTypeEnumTypeTransformer().decode(value);
+  static NotificationModelEmbeddedResourceTypeEnum? fromJson(dynamic value) =>
+      NotificationModelEmbeddedResourceTypeEnumTypeTransformer().decode(value);
 
-  static List<NotificationModelEmbeddedResourceTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<NotificationModelEmbeddedResourceTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <NotificationModelEmbeddedResourceTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -395,7 +417,9 @@ class NotificationModelEmbeddedResourceTypeEnum {
 /// Transformation class that can [encode] an instance of [NotificationModelEmbeddedResourceTypeEnum] to Object,
 /// and [decode] dynamic data back to [NotificationModelEmbeddedResourceTypeEnum].
 class NotificationModelEmbeddedResourceTypeEnumTypeTransformer {
-  factory NotificationModelEmbeddedResourceTypeEnumTypeTransformer() => _instance ??= const NotificationModelEmbeddedResourceTypeEnumTypeTransformer._();
+  factory NotificationModelEmbeddedResourceTypeEnumTypeTransformer() =>
+      _instance ??=
+          const NotificationModelEmbeddedResourceTypeEnumTypeTransformer._();
 
   const NotificationModelEmbeddedResourceTypeEnumTypeTransformer._();
 
@@ -409,10 +433,12 @@ class NotificationModelEmbeddedResourceTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  NotificationModelEmbeddedResourceTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  NotificationModelEmbeddedResourceTypeEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'WorkPackage': return NotificationModelEmbeddedResourceTypeEnum.workPackage;
+        case 'WorkPackage':
+          return NotificationModelEmbeddedResourceTypeEnum.workPackage;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -425,5 +451,3 @@ class NotificationModelEmbeddedResourceTypeEnumTypeTransformer {
   /// Singleton [NotificationModelEmbeddedResourceTypeEnumTypeTransformer] instance.
   static NotificationModelEmbeddedResourceTypeEnumTypeTransformer? _instance;
 }
-
-

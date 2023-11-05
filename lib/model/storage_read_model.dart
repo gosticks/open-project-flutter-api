@@ -51,30 +51,33 @@ class StorageReadModel {
   StorageReadModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StorageReadModel &&
-    other.id == id &&
-    other.type == type &&
-    other.name == name &&
-    other.hasApplicationPassword == hasApplicationPassword &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.embedded == embedded &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StorageReadModel &&
+          other.id == id &&
+          other.type == type &&
+          other.name == name &&
+          other.hasApplicationPassword == hasApplicationPassword &&
+          other.createdAt == createdAt &&
+          other.updatedAt == updatedAt &&
+          other.embedded == embedded &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (hasApplicationPassword == null ? 0 : hasApplicationPassword!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (embedded == null ? 0 : embedded!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id == null ? 0 : id!.hashCode) +
+      (type == null ? 0 : type!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (hasApplicationPassword == null ? 0 : hasApplicationPassword!.hashCode) +
+      (createdAt == null ? 0 : createdAt!.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (embedded == null ? 0 : embedded!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'StorageReadModel[id=$id, type=$type, name=$name, hasApplicationPassword=$hasApplicationPassword, createdAt=$createdAt, updatedAt=$updatedAt, embedded=$embedded, links=$links]';
+  String toString() =>
+      'StorageReadModel[id=$id, type=$type, name=$name, hasApplicationPassword=$hasApplicationPassword, createdAt=$createdAt, updatedAt=$updatedAt, embedded=$embedded, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -113,7 +116,7 @@ class StorageReadModel {
     } else {
       json[r'_embedded'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -129,17 +132,20 @@ class StorageReadModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StorageReadModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StorageReadModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "StorageReadModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "StorageReadModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return StorageReadModel(
         id: mapValueOfType<Object>(json, r'id'),
-        type: Object.fromJson(json[r'_type']),
+        type: StorageReadModelTypeEnum.fromJson(json[r'_type']),
         name: mapValueOfType<Object>(json, r'name'),
-        hasApplicationPassword: mapValueOfType<Object>(json, r'hasApplicationPassword'),
+        hasApplicationPassword:
+            mapValueOfType<Object>(json, r'hasApplicationPassword'),
         createdAt: mapValueOfType<Object>(json, r'createdAt'),
         updatedAt: mapValueOfType<Object>(json, r'updatedAt'),
         embedded: StorageReadModelEmbedded.fromJson(json[r'_embedded']),
@@ -149,7 +155,10 @@ class StorageReadModel {
     return null;
   }
 
-  static List<StorageReadModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageReadModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageReadModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -177,13 +186,19 @@ class StorageReadModel {
   }
 
   // maps a json object with a list of StorageReadModel-objects as value to a dart map
-  static Map<String, List<StorageReadModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<StorageReadModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<StorageReadModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StorageReadModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StorageReadModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -197,7 +212,6 @@ class StorageReadModel {
     '_links',
   };
 }
-
 
 class StorageReadModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -218,9 +232,13 @@ class StorageReadModelTypeEnum {
     storage,
   ];
 
-  static StorageReadModelTypeEnum? fromJson(dynamic value) => StorageReadModelTypeEnumTypeTransformer().decode(value);
+  static StorageReadModelTypeEnum? fromJson(dynamic value) =>
+      StorageReadModelTypeEnumTypeTransformer().decode(value);
 
-  static List<StorageReadModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageReadModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageReadModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -237,7 +255,8 @@ class StorageReadModelTypeEnum {
 /// Transformation class that can [encode] an instance of [StorageReadModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [StorageReadModelTypeEnum].
 class StorageReadModelTypeEnumTypeTransformer {
-  factory StorageReadModelTypeEnumTypeTransformer() => _instance ??= const StorageReadModelTypeEnumTypeTransformer._();
+  factory StorageReadModelTypeEnumTypeTransformer() =>
+      _instance ??= const StorageReadModelTypeEnumTypeTransformer._();
 
   const StorageReadModelTypeEnumTypeTransformer._();
 
@@ -254,7 +273,8 @@ class StorageReadModelTypeEnumTypeTransformer {
   StorageReadModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Storage': return StorageReadModelTypeEnum.storage;
+        case 'Storage':
+          return StorageReadModelTypeEnum.storage;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -267,5 +287,3 @@ class StorageReadModelTypeEnumTypeTransformer {
   /// Singleton [StorageReadModelTypeEnumTypeTransformer] instance.
   static StorageReadModelTypeEnumTypeTransformer? _instance;
 }
-
-

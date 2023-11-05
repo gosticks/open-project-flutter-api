@@ -30,22 +30,25 @@ class NotificationModelDetailsInner {
   ValuesPropertyModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is NotificationModelDetailsInner &&
-    other.type == type &&
-    other.property == property &&
-    other.value == value &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NotificationModelDetailsInner &&
+          other.type == type &&
+          other.property == property &&
+          other.value == value &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (property == null ? 0 : property!.hashCode) +
-    (value == null ? 0 : value!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (property == null ? 0 : property!.hashCode) +
+      (value == null ? 0 : value!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'NotificationModelDetailsInner[type=$type, property=$property, value=$value, links=$links]';
+  String toString() =>
+      'NotificationModelDetailsInner[type=$type, property=$property, value=$value, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -64,7 +67,7 @@ class NotificationModelDetailsInner {
     } else {
       json[r'value'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -80,14 +83,16 @@ class NotificationModelDetailsInner {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "NotificationModelDetailsInner[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "NotificationModelDetailsInner[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "NotificationModelDetailsInner[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "NotificationModelDetailsInner[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return NotificationModelDetailsInner(
-        type: Object.fromJson(json[r'_type']),
+        type: NotificationModelDetailsInnerTypeEnum.fromJson(json[r'_type']),
         property: mapValueOfType<Object>(json, r'property'),
         value: mapValueOfType<Object>(json, r'value'),
         links: ValuesPropertyModelLinks.fromJson(json[r'_links'])!,
@@ -96,7 +101,10 @@ class NotificationModelDetailsInner {
     return null;
   }
 
-  static List<NotificationModelDetailsInner> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<NotificationModelDetailsInner> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <NotificationModelDetailsInner>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -124,13 +132,19 @@ class NotificationModelDetailsInner {
   }
 
   // maps a json object with a list of NotificationModelDetailsInner-objects as value to a dart map
-  static Map<String, List<NotificationModelDetailsInner>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<NotificationModelDetailsInner>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<NotificationModelDetailsInner>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = NotificationModelDetailsInner.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = NotificationModelDetailsInner.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -145,7 +159,6 @@ class NotificationModelDetailsInner {
   };
 }
 
-
 class NotificationModelDetailsInnerTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const NotificationModelDetailsInnerTypeEnum._(this.value);
@@ -158,16 +171,21 @@ class NotificationModelDetailsInnerTypeEnum {
 
   Object toJson() => value;
 
-  static const valuesColonColonProperty = NotificationModelDetailsInnerTypeEnum._('Values::Property');
+  static const valuesColonColonProperty =
+      NotificationModelDetailsInnerTypeEnum._('Values::Property');
 
   /// List of all possible values in this [enum][NotificationModelDetailsInnerTypeEnum].
   static const values = <NotificationModelDetailsInnerTypeEnum>[
     valuesColonColonProperty,
   ];
 
-  static NotificationModelDetailsInnerTypeEnum? fromJson(dynamic value) => NotificationModelDetailsInnerTypeEnumTypeTransformer().decode(value);
+  static NotificationModelDetailsInnerTypeEnum? fromJson(dynamic value) =>
+      NotificationModelDetailsInnerTypeEnumTypeTransformer().decode(value);
 
-  static List<NotificationModelDetailsInnerTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<NotificationModelDetailsInnerTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <NotificationModelDetailsInnerTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -184,7 +202,9 @@ class NotificationModelDetailsInnerTypeEnum {
 /// Transformation class that can [encode] an instance of [NotificationModelDetailsInnerTypeEnum] to Object,
 /// and [decode] dynamic data back to [NotificationModelDetailsInnerTypeEnum].
 class NotificationModelDetailsInnerTypeEnumTypeTransformer {
-  factory NotificationModelDetailsInnerTypeEnumTypeTransformer() => _instance ??= const NotificationModelDetailsInnerTypeEnumTypeTransformer._();
+  factory NotificationModelDetailsInnerTypeEnumTypeTransformer() =>
+      _instance ??=
+          const NotificationModelDetailsInnerTypeEnumTypeTransformer._();
 
   const NotificationModelDetailsInnerTypeEnumTypeTransformer._();
 
@@ -198,10 +218,12 @@ class NotificationModelDetailsInnerTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  NotificationModelDetailsInnerTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  NotificationModelDetailsInnerTypeEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Values::Property': return NotificationModelDetailsInnerTypeEnum.valuesColonColonProperty;
+        case 'Values::Property':
+          return NotificationModelDetailsInnerTypeEnum.valuesColonColonProperty;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -214,5 +236,3 @@ class NotificationModelDetailsInnerTypeEnumTypeTransformer {
   /// Singleton [NotificationModelDetailsInnerTypeEnumTypeTransformer] instance.
   static NotificationModelDetailsInnerTypeEnumTypeTransformer? _instance;
 }
-
-

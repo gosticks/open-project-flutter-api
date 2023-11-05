@@ -59,32 +59,35 @@ class StatusModel {
   StatusModelLinks? links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StatusModel &&
-    other.type == type &&
-    other.id == id &&
-    other.name == name &&
-    other.position == position &&
-    other.isDefault == isDefault &&
-    other.isClosed == isClosed &&
-    other.isReadonly == isReadonly &&
-    other.defaultDoneRatio == defaultDoneRatio &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StatusModel &&
+          other.type == type &&
+          other.id == id &&
+          other.name == name &&
+          other.position == position &&
+          other.isDefault == isDefault &&
+          other.isClosed == isClosed &&
+          other.isReadonly == isReadonly &&
+          other.defaultDoneRatio == defaultDoneRatio &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (position == null ? 0 : position!.hashCode) +
-    (isDefault == null ? 0 : isDefault!.hashCode) +
-    (isClosed == null ? 0 : isClosed!.hashCode) +
-    (isReadonly == null ? 0 : isReadonly!.hashCode) +
-    (defaultDoneRatio == null ? 0 : defaultDoneRatio!.hashCode) +
-    (links == null ? 0 : links!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (id == null ? 0 : id!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (position == null ? 0 : position!.hashCode) +
+      (isDefault == null ? 0 : isDefault!.hashCode) +
+      (isClosed == null ? 0 : isClosed!.hashCode) +
+      (isReadonly == null ? 0 : isReadonly!.hashCode) +
+      (defaultDoneRatio == null ? 0 : defaultDoneRatio!.hashCode) +
+      (links == null ? 0 : links!.hashCode);
 
   @override
-  String toString() => 'StatusModel[type=$type, id=$id, name=$name, position=$position, isDefault=$isDefault, isClosed=$isClosed, isReadonly=$isReadonly, defaultDoneRatio=$defaultDoneRatio, links=$links]';
+  String toString() =>
+      'StatusModel[type=$type, id=$id, name=$name, position=$position, isDefault=$isDefault, isClosed=$isClosed, isReadonly=$isReadonly, defaultDoneRatio=$defaultDoneRatio, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -148,14 +151,16 @@ class StatusModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StatusModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StatusModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "StatusModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "StatusModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return StatusModel(
-        type: Object.fromJson(json[r'_type']),
+        type: StatusModelTypeEnum.fromJson(json[r'_type']),
         id: mapValueOfType<Object>(json, r'id'),
         name: mapValueOfType<Object>(json, r'name'),
         position: mapValueOfType<Object>(json, r'position'),
@@ -169,7 +174,10 @@ class StatusModel {
     return null;
   }
 
-  static List<StatusModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StatusModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StatusModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -197,23 +205,27 @@ class StatusModel {
   }
 
   // maps a json object with a list of StatusModel-objects as value to a dart map
-  static Map<String, List<StatusModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<StatusModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<StatusModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StatusModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StatusModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-
 
 class StatusModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -234,9 +246,13 @@ class StatusModelTypeEnum {
     status,
   ];
 
-  static StatusModelTypeEnum? fromJson(dynamic value) => StatusModelTypeEnumTypeTransformer().decode(value);
+  static StatusModelTypeEnum? fromJson(dynamic value) =>
+      StatusModelTypeEnumTypeTransformer().decode(value);
 
-  static List<StatusModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StatusModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StatusModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -253,7 +269,8 @@ class StatusModelTypeEnum {
 /// Transformation class that can [encode] an instance of [StatusModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [StatusModelTypeEnum].
 class StatusModelTypeEnumTypeTransformer {
-  factory StatusModelTypeEnumTypeTransformer() => _instance ??= const StatusModelTypeEnumTypeTransformer._();
+  factory StatusModelTypeEnumTypeTransformer() =>
+      _instance ??= const StatusModelTypeEnumTypeTransformer._();
 
   const StatusModelTypeEnumTypeTransformer._();
 
@@ -270,7 +287,8 @@ class StatusModelTypeEnumTypeTransformer {
   StatusModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Status': return StatusModelTypeEnum.status;
+        case 'Status':
+          return StatusModelTypeEnum.status;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -283,5 +301,3 @@ class StatusModelTypeEnumTypeTransformer {
   /// Singleton [StatusModelTypeEnumTypeTransformer] instance.
   static StatusModelTypeEnumTypeTransformer? _instance;
 }
-
-

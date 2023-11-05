@@ -96,41 +96,44 @@ class StorageFileModel {
   StorageFileModelAllOfLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StorageFileModel &&
-    other.id == id &&
-    other.name == name &&
-    other.mimeType == mimeType &&
-    other.size == size &&
-    other.createdAt == createdAt &&
-    other.lastModifiedAt == lastModifiedAt &&
-    other.createdByName == createdByName &&
-    other.lastModifiedByName == lastModifiedByName &&
-    other.type == type &&
-    other.location == location &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StorageFileModel &&
+          other.id == id &&
+          other.name == name &&
+          other.mimeType == mimeType &&
+          other.size == size &&
+          other.createdAt == createdAt &&
+          other.lastModifiedAt == lastModifiedAt &&
+          other.createdByName == createdByName &&
+          other.lastModifiedByName == lastModifiedByName &&
+          other.type == type &&
+          other.location == location &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (mimeType == null ? 0 : mimeType!.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (lastModifiedAt == null ? 0 : lastModifiedAt!.hashCode) +
-    (createdByName == null ? 0 : createdByName!.hashCode) +
-    (lastModifiedByName == null ? 0 : lastModifiedByName!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (location == null ? 0 : location!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (name.hashCode) +
+      (mimeType == null ? 0 : mimeType!.hashCode) +
+      (size == null ? 0 : size!.hashCode) +
+      (createdAt == null ? 0 : createdAt!.hashCode) +
+      (lastModifiedAt == null ? 0 : lastModifiedAt!.hashCode) +
+      (createdByName == null ? 0 : createdByName!.hashCode) +
+      (lastModifiedByName == null ? 0 : lastModifiedByName!.hashCode) +
+      (type == null ? 0 : type!.hashCode) +
+      (location == null ? 0 : location!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'StorageFileModel[id=$id, name=$name, mimeType=$mimeType, size=$size, createdAt=$createdAt, lastModifiedAt=$lastModifiedAt, createdByName=$createdByName, lastModifiedByName=$lastModifiedByName, type=$type, location=$location, links=$links]';
+  String toString() =>
+      'StorageFileModel[id=$id, name=$name, mimeType=$mimeType, size=$size, createdAt=$createdAt, lastModifiedAt=$lastModifiedAt, createdByName=$createdByName, lastModifiedByName=$lastModifiedByName, type=$type, location=$location, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'name'] = this.name;
+    json[r'id'] = this.id;
+    json[r'name'] = this.name;
     if (this.mimeType != null) {
       json[r'mimeType'] = this.mimeType;
     } else {
@@ -171,7 +174,7 @@ class StorageFileModel {
     } else {
       json[r'location'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -187,8 +190,10 @@ class StorageFileModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StorageFileModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StorageFileModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "StorageFileModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "StorageFileModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -202,7 +207,7 @@ class StorageFileModel {
         lastModifiedAt: mapDateTime(json, r'lastModifiedAt', r''),
         createdByName: mapValueOfType<String>(json, r'createdByName'),
         lastModifiedByName: mapValueOfType<String>(json, r'lastModifiedByName'),
-        type: Object.fromJson(json[r'_type']),
+        type: StorageFileModelTypeEnum.fromJson(json[r'_type']),
         location: mapValueOfType<Object>(json, r'location'),
         links: StorageFileModelAllOfLinks.fromJson(json[r'_links'])!,
       );
@@ -210,7 +215,10 @@ class StorageFileModel {
     return null;
   }
 
-  static List<StorageFileModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageFileModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageFileModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -238,13 +246,19 @@ class StorageFileModel {
   }
 
   // maps a json object with a list of StorageFileModel-objects as value to a dart map
-  static Map<String, List<StorageFileModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<StorageFileModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<StorageFileModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StorageFileModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StorageFileModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -259,7 +273,6 @@ class StorageFileModel {
     '_links',
   };
 }
-
 
 class StorageFileModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -280,9 +293,13 @@ class StorageFileModelTypeEnum {
     storageFile,
   ];
 
-  static StorageFileModelTypeEnum? fromJson(dynamic value) => StorageFileModelTypeEnumTypeTransformer().decode(value);
+  static StorageFileModelTypeEnum? fromJson(dynamic value) =>
+      StorageFileModelTypeEnumTypeTransformer().decode(value);
 
-  static List<StorageFileModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageFileModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageFileModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -299,7 +316,8 @@ class StorageFileModelTypeEnum {
 /// Transformation class that can [encode] an instance of [StorageFileModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [StorageFileModelTypeEnum].
 class StorageFileModelTypeEnumTypeTransformer {
-  factory StorageFileModelTypeEnumTypeTransformer() => _instance ??= const StorageFileModelTypeEnumTypeTransformer._();
+  factory StorageFileModelTypeEnumTypeTransformer() =>
+      _instance ??= const StorageFileModelTypeEnumTypeTransformer._();
 
   const StorageFileModelTypeEnumTypeTransformer._();
 
@@ -316,7 +334,8 @@ class StorageFileModelTypeEnumTypeTransformer {
   StorageFileModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'StorageFile': return StorageFileModelTypeEnum.storageFile;
+        case 'StorageFile':
+          return StorageFileModelTypeEnum.storageFile;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -329,5 +348,3 @@ class StorageFileModelTypeEnumTypeTransformer {
   /// Singleton [StorageFileModelTypeEnumTypeTransformer] instance.
   static StorageFileModelTypeEnumTypeTransformer? _instance;
 }
-
-

@@ -33,24 +33,27 @@ class StorageFilesModel {
   StorageFileModelAllOfLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StorageFilesModel &&
-    other.type == type &&
-    other.files == files &&
-    other.parent == parent &&
-    other.ancestors == ancestors &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StorageFilesModel &&
+          other.type == type &&
+          other.files == files &&
+          other.parent == parent &&
+          other.ancestors == ancestors &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (files == null ? 0 : files!.hashCode) +
-    (parent.hashCode) +
-    (ancestors == null ? 0 : ancestors!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (files == null ? 0 : files!.hashCode) +
+      (parent.hashCode) +
+      (ancestors == null ? 0 : ancestors!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'StorageFilesModel[type=$type, files=$files, parent=$parent, ancestors=$ancestors, links=$links]';
+  String toString() =>
+      'StorageFilesModel[type=$type, files=$files, parent=$parent, ancestors=$ancestors, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -64,13 +67,13 @@ class StorageFilesModel {
     } else {
       json[r'files'] = null;
     }
-      json[r'parent'] = this.parent;
+    json[r'parent'] = this.parent;
     if (this.ancestors != null) {
       json[r'ancestors'] = this.ancestors;
     } else {
       json[r'ancestors'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -86,14 +89,16 @@ class StorageFilesModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StorageFilesModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StorageFilesModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "StorageFilesModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "StorageFilesModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return StorageFilesModel(
-        type: Object.fromJson(json[r'_type']),
+        type: StorageFilesModelTypeEnum.fromJson(json[r'_type']),
         files: mapValueOfType<Object>(json, r'files'),
         parent: StorageFilesModelParent.fromJson(json[r'parent'])!,
         ancestors: mapValueOfType<Object>(json, r'ancestors'),
@@ -103,7 +108,10 @@ class StorageFilesModel {
     return null;
   }
 
-  static List<StorageFilesModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageFilesModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageFilesModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -131,13 +139,19 @@ class StorageFilesModel {
   }
 
   // maps a json object with a list of StorageFilesModel-objects as value to a dart map
-  static Map<String, List<StorageFilesModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<StorageFilesModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<StorageFilesModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StorageFilesModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StorageFilesModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -152,7 +166,6 @@ class StorageFilesModel {
     '_links',
   };
 }
-
 
 class StorageFilesModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -173,9 +186,13 @@ class StorageFilesModelTypeEnum {
     storageFiles,
   ];
 
-  static StorageFilesModelTypeEnum? fromJson(dynamic value) => StorageFilesModelTypeEnumTypeTransformer().decode(value);
+  static StorageFilesModelTypeEnum? fromJson(dynamic value) =>
+      StorageFilesModelTypeEnumTypeTransformer().decode(value);
 
-  static List<StorageFilesModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageFilesModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageFilesModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -192,7 +209,8 @@ class StorageFilesModelTypeEnum {
 /// Transformation class that can [encode] an instance of [StorageFilesModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [StorageFilesModelTypeEnum].
 class StorageFilesModelTypeEnumTypeTransformer {
-  factory StorageFilesModelTypeEnumTypeTransformer() => _instance ??= const StorageFilesModelTypeEnumTypeTransformer._();
+  factory StorageFilesModelTypeEnumTypeTransformer() =>
+      _instance ??= const StorageFilesModelTypeEnumTypeTransformer._();
 
   const StorageFilesModelTypeEnumTypeTransformer._();
 
@@ -209,7 +227,8 @@ class StorageFilesModelTypeEnumTypeTransformer {
   StorageFilesModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'StorageFiles': return StorageFilesModelTypeEnum.storageFiles;
+        case 'StorageFiles':
+          return StorageFilesModelTypeEnum.storageFiles;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -222,5 +241,3 @@ class StorageFilesModelTypeEnumTypeTransformer {
   /// Singleton [StorageFilesModelTypeEnumTypeTransformer] instance.
   static StorageFilesModelTypeEnumTypeTransformer? _instance;
 }
-
-

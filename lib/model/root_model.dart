@@ -30,22 +30,25 @@ class RootModel {
   RootModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RootModel &&
-    other.type == type &&
-    other.instanceName == instanceName &&
-    other.coreVersion == coreVersion &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RootModel &&
+          other.type == type &&
+          other.instanceName == instanceName &&
+          other.coreVersion == coreVersion &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (instanceName == null ? 0 : instanceName!.hashCode) +
-    (coreVersion == null ? 0 : coreVersion!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (instanceName == null ? 0 : instanceName!.hashCode) +
+      (coreVersion == null ? 0 : coreVersion!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'RootModel[type=$type, instanceName=$instanceName, coreVersion=$coreVersion, links=$links]';
+  String toString() =>
+      'RootModel[type=$type, instanceName=$instanceName, coreVersion=$coreVersion, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -64,7 +67,7 @@ class RootModel {
     } else {
       json[r'coreVersion'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -80,14 +83,16 @@ class RootModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RootModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RootModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "RootModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "RootModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return RootModel(
-        type: Object.fromJson(json[r'_type']),
+        type: RootModelTypeEnum.fromJson(json[r'_type']),
         instanceName: mapValueOfType<Object>(json, r'instanceName'),
         coreVersion: mapValueOfType<Object>(json, r'coreVersion'),
         links: RootModelLinks.fromJson(json[r'_links'])!,
@@ -96,7 +101,10 @@ class RootModel {
     return null;
   }
 
-  static List<RootModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RootModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <RootModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -124,13 +132,19 @@ class RootModel {
   }
 
   // maps a json object with a list of RootModel-objects as value to a dart map
-  static Map<String, List<RootModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<RootModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<RootModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = RootModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = RootModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -143,7 +157,6 @@ class RootModel {
     '_links',
   };
 }
-
 
 class RootModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -164,9 +177,13 @@ class RootModelTypeEnum {
     root,
   ];
 
-  static RootModelTypeEnum? fromJson(dynamic value) => RootModelTypeEnumTypeTransformer().decode(value);
+  static RootModelTypeEnum? fromJson(dynamic value) =>
+      RootModelTypeEnumTypeTransformer().decode(value);
 
-  static List<RootModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RootModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <RootModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -183,7 +200,8 @@ class RootModelTypeEnum {
 /// Transformation class that can [encode] an instance of [RootModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [RootModelTypeEnum].
 class RootModelTypeEnumTypeTransformer {
-  factory RootModelTypeEnumTypeTransformer() => _instance ??= const RootModelTypeEnumTypeTransformer._();
+  factory RootModelTypeEnumTypeTransformer() =>
+      _instance ??= const RootModelTypeEnumTypeTransformer._();
 
   const RootModelTypeEnumTypeTransformer._();
 
@@ -200,7 +218,8 @@ class RootModelTypeEnumTypeTransformer {
   RootModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Root': return RootModelTypeEnum.root;
+        case 'Root':
+          return RootModelTypeEnum.root;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -213,5 +232,3 @@ class RootModelTypeEnumTypeTransformer {
   /// Singleton [RootModelTypeEnumTypeTransformer] instance.
   static RootModelTypeEnumTypeTransformer? _instance;
 }
-
-

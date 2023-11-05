@@ -43,28 +43,31 @@ class TimeEntryActivityModel {
   TimeEntryActivityModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TimeEntryActivityModel &&
-    other.type == type &&
-    other.id == id &&
-    other.name == name &&
-    other.position == position &&
-    other.default_ == default_ &&
-    other.embedded == embedded &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TimeEntryActivityModel &&
+          other.type == type &&
+          other.id == id &&
+          other.name == name &&
+          other.position == position &&
+          other.default_ == default_ &&
+          other.embedded == embedded &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (position == null ? 0 : position!.hashCode) +
-    (default_ == null ? 0 : default_!.hashCode) +
-    (embedded.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (id == null ? 0 : id!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (position == null ? 0 : position!.hashCode) +
+      (default_ == null ? 0 : default_!.hashCode) +
+      (embedded.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'TimeEntryActivityModel[type=$type, id=$id, name=$name, position=$position, default_=$default_, embedded=$embedded, links=$links]';
+  String toString() =>
+      'TimeEntryActivityModel[type=$type, id=$id, name=$name, position=$position, default_=$default_, embedded=$embedded, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -93,8 +96,8 @@ class TimeEntryActivityModel {
     } else {
       json[r'default'] = null;
     }
-      json[r'_embedded'] = this.embedded;
-      json[r'_links'] = this.links;
+    json[r'_embedded'] = this.embedded;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -110,14 +113,16 @@ class TimeEntryActivityModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "TimeEntryActivityModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "TimeEntryActivityModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "TimeEntryActivityModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "TimeEntryActivityModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return TimeEntryActivityModel(
-        type: Object.fromJson(json[r'_type']),
+        type: TimeEntryActivityModelTypeEnum.fromJson(json[r'_type']),
         id: mapValueOfType<Object>(json, r'id'),
         name: mapValueOfType<Object>(json, r'name'),
         position: mapValueOfType<Object>(json, r'position'),
@@ -129,7 +134,10 @@ class TimeEntryActivityModel {
     return null;
   }
 
-  static List<TimeEntryActivityModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TimeEntryActivityModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TimeEntryActivityModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -157,13 +165,19 @@ class TimeEntryActivityModel {
   }
 
   // maps a json object with a list of TimeEntryActivityModel-objects as value to a dart map
-  static Map<String, List<TimeEntryActivityModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<TimeEntryActivityModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<TimeEntryActivityModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = TimeEntryActivityModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = TimeEntryActivityModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -181,7 +195,6 @@ class TimeEntryActivityModel {
   };
 }
 
-
 class TimeEntryActivityModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const TimeEntryActivityModelTypeEnum._(this.value);
@@ -194,16 +207,21 @@ class TimeEntryActivityModelTypeEnum {
 
   Object toJson() => value;
 
-  static const timeEntriesActivity = TimeEntryActivityModelTypeEnum._('TimeEntriesActivity');
+  static const timeEntriesActivity =
+      TimeEntryActivityModelTypeEnum._('TimeEntriesActivity');
 
   /// List of all possible values in this [enum][TimeEntryActivityModelTypeEnum].
   static const values = <TimeEntryActivityModelTypeEnum>[
     timeEntriesActivity,
   ];
 
-  static TimeEntryActivityModelTypeEnum? fromJson(dynamic value) => TimeEntryActivityModelTypeEnumTypeTransformer().decode(value);
+  static TimeEntryActivityModelTypeEnum? fromJson(dynamic value) =>
+      TimeEntryActivityModelTypeEnumTypeTransformer().decode(value);
 
-  static List<TimeEntryActivityModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TimeEntryActivityModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TimeEntryActivityModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -220,7 +238,8 @@ class TimeEntryActivityModelTypeEnum {
 /// Transformation class that can [encode] an instance of [TimeEntryActivityModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [TimeEntryActivityModelTypeEnum].
 class TimeEntryActivityModelTypeEnumTypeTransformer {
-  factory TimeEntryActivityModelTypeEnumTypeTransformer() => _instance ??= const TimeEntryActivityModelTypeEnumTypeTransformer._();
+  factory TimeEntryActivityModelTypeEnumTypeTransformer() =>
+      _instance ??= const TimeEntryActivityModelTypeEnumTypeTransformer._();
 
   const TimeEntryActivityModelTypeEnumTypeTransformer._();
 
@@ -234,10 +253,12 @@ class TimeEntryActivityModelTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  TimeEntryActivityModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  TimeEntryActivityModelTypeEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'TimeEntriesActivity': return TimeEntryActivityModelTypeEnum.timeEntriesActivity;
+        case 'TimeEntriesActivity':
+          return TimeEntryActivityModelTypeEnum.timeEntriesActivity;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -250,5 +271,3 @@ class TimeEntryActivityModelTypeEnumTypeTransformer {
   /// Singleton [TimeEntryActivityModelTypeEnumTypeTransformer] instance.
   static TimeEntryActivityModelTypeEnumTypeTransformer? _instance;
 }
-
-

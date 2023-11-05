@@ -23,15 +23,17 @@ class WeekDayWriteModel {
   Object? working;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WeekDayWriteModel &&
-    other.type == type &&
-    other.working == working;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WeekDayWriteModel &&
+          other.type == type &&
+          other.working == working;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (working == null ? 0 : working!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (working == null ? 0 : working!.hashCode);
 
   @override
   String toString() => 'WeekDayWriteModel[type=$type, working=$working]';
@@ -63,21 +65,26 @@ class WeekDayWriteModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WeekDayWriteModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WeekDayWriteModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "WeekDayWriteModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "WeekDayWriteModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return WeekDayWriteModel(
-        type: Object.fromJson(json[r'_type']),
+        type: WeekDayWriteModelTypeEnum.fromJson(json[r'_type']),
         working: mapValueOfType<Object>(json, r'working'),
       );
     }
     return null;
   }
 
-  static List<WeekDayWriteModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WeekDayWriteModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <WeekDayWriteModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -105,13 +112,19 @@ class WeekDayWriteModel {
   }
 
   // maps a json object with a list of WeekDayWriteModel-objects as value to a dart map
-  static Map<String, List<WeekDayWriteModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<WeekDayWriteModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<WeekDayWriteModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WeekDayWriteModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WeekDayWriteModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -123,7 +136,6 @@ class WeekDayWriteModel {
     'working',
   };
 }
-
 
 class WeekDayWriteModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -144,9 +156,13 @@ class WeekDayWriteModelTypeEnum {
     weekDay,
   ];
 
-  static WeekDayWriteModelTypeEnum? fromJson(dynamic value) => WeekDayWriteModelTypeEnumTypeTransformer().decode(value);
+  static WeekDayWriteModelTypeEnum? fromJson(dynamic value) =>
+      WeekDayWriteModelTypeEnumTypeTransformer().decode(value);
 
-  static List<WeekDayWriteModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WeekDayWriteModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <WeekDayWriteModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -163,7 +179,8 @@ class WeekDayWriteModelTypeEnum {
 /// Transformation class that can [encode] an instance of [WeekDayWriteModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [WeekDayWriteModelTypeEnum].
 class WeekDayWriteModelTypeEnumTypeTransformer {
-  factory WeekDayWriteModelTypeEnumTypeTransformer() => _instance ??= const WeekDayWriteModelTypeEnumTypeTransformer._();
+  factory WeekDayWriteModelTypeEnumTypeTransformer() =>
+      _instance ??= const WeekDayWriteModelTypeEnumTypeTransformer._();
 
   const WeekDayWriteModelTypeEnumTypeTransformer._();
 
@@ -180,7 +197,8 @@ class WeekDayWriteModelTypeEnumTypeTransformer {
   WeekDayWriteModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'WeekDay': return WeekDayWriteModelTypeEnum.weekDay;
+        case 'WeekDay':
+          return WeekDayWriteModelTypeEnum.weekDay;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -193,5 +211,3 @@ class WeekDayWriteModelTypeEnumTypeTransformer {
   /// Singleton [WeekDayWriteModelTypeEnumTypeTransformer] instance.
   static WeekDayWriteModelTypeEnumTypeTransformer? _instance;
 }
-
-

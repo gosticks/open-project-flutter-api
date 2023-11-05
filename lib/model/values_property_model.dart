@@ -30,22 +30,25 @@ class ValuesPropertyModel {
   ValuesPropertyModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ValuesPropertyModel &&
-    other.type == type &&
-    other.property == property &&
-    other.value == value &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ValuesPropertyModel &&
+          other.type == type &&
+          other.property == property &&
+          other.value == value &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (property == null ? 0 : property!.hashCode) +
-    (value == null ? 0 : value!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (property == null ? 0 : property!.hashCode) +
+      (value == null ? 0 : value!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'ValuesPropertyModel[type=$type, property=$property, value=$value, links=$links]';
+  String toString() =>
+      'ValuesPropertyModel[type=$type, property=$property, value=$value, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -64,7 +67,7 @@ class ValuesPropertyModel {
     } else {
       json[r'value'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -80,14 +83,16 @@ class ValuesPropertyModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ValuesPropertyModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ValuesPropertyModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "ValuesPropertyModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "ValuesPropertyModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return ValuesPropertyModel(
-        type: Object.fromJson(json[r'_type']),
+        type: ValuesPropertyModelTypeEnum.fromJson(json[r'_type']),
         property: mapValueOfType<Object>(json, r'property'),
         value: mapValueOfType<Object>(json, r'value'),
         links: ValuesPropertyModelLinks.fromJson(json[r'_links'])!,
@@ -96,7 +101,10 @@ class ValuesPropertyModel {
     return null;
   }
 
-  static List<ValuesPropertyModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ValuesPropertyModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ValuesPropertyModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -124,13 +132,19 @@ class ValuesPropertyModel {
   }
 
   // maps a json object with a list of ValuesPropertyModel-objects as value to a dart map
-  static Map<String, List<ValuesPropertyModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ValuesPropertyModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ValuesPropertyModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ValuesPropertyModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ValuesPropertyModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -145,7 +159,6 @@ class ValuesPropertyModel {
   };
 }
 
-
 class ValuesPropertyModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const ValuesPropertyModelTypeEnum._(this.value);
@@ -158,16 +171,21 @@ class ValuesPropertyModelTypeEnum {
 
   Object toJson() => value;
 
-  static const valuesColonColonProperty = ValuesPropertyModelTypeEnum._('Values::Property');
+  static const valuesColonColonProperty =
+      ValuesPropertyModelTypeEnum._('Values::Property');
 
   /// List of all possible values in this [enum][ValuesPropertyModelTypeEnum].
   static const values = <ValuesPropertyModelTypeEnum>[
     valuesColonColonProperty,
   ];
 
-  static ValuesPropertyModelTypeEnum? fromJson(dynamic value) => ValuesPropertyModelTypeEnumTypeTransformer().decode(value);
+  static ValuesPropertyModelTypeEnum? fromJson(dynamic value) =>
+      ValuesPropertyModelTypeEnumTypeTransformer().decode(value);
 
-  static List<ValuesPropertyModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ValuesPropertyModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ValuesPropertyModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -184,7 +202,8 @@ class ValuesPropertyModelTypeEnum {
 /// Transformation class that can [encode] an instance of [ValuesPropertyModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [ValuesPropertyModelTypeEnum].
 class ValuesPropertyModelTypeEnumTypeTransformer {
-  factory ValuesPropertyModelTypeEnumTypeTransformer() => _instance ??= const ValuesPropertyModelTypeEnumTypeTransformer._();
+  factory ValuesPropertyModelTypeEnumTypeTransformer() =>
+      _instance ??= const ValuesPropertyModelTypeEnumTypeTransformer._();
 
   const ValuesPropertyModelTypeEnumTypeTransformer._();
 
@@ -201,7 +220,8 @@ class ValuesPropertyModelTypeEnumTypeTransformer {
   ValuesPropertyModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Values::Property': return ValuesPropertyModelTypeEnum.valuesColonColonProperty;
+        case 'Values::Property':
+          return ValuesPropertyModelTypeEnum.valuesColonColonProperty;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -214,5 +234,3 @@ class ValuesPropertyModelTypeEnumTypeTransformer {
   /// Singleton [ValuesPropertyModelTypeEnumTypeTransformer] instance.
   static ValuesPropertyModelTypeEnumTypeTransformer? _instance;
 }
-
-

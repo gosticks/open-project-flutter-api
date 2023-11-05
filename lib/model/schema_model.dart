@@ -26,20 +26,23 @@ class SchemaModel {
   SchemaModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SchemaModel &&
-    other.type == type &&
-    other.dependencies == dependencies &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SchemaModel &&
+          other.type == type &&
+          other.dependencies == dependencies &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (dependencies == null ? 0 : dependencies!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (dependencies == null ? 0 : dependencies!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'SchemaModel[type=$type, dependencies=$dependencies, links=$links]';
+  String toString() =>
+      'SchemaModel[type=$type, dependencies=$dependencies, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -53,7 +56,7 @@ class SchemaModel {
     } else {
       json[r'_dependencies'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -69,14 +72,16 @@ class SchemaModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "SchemaModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "SchemaModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "SchemaModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "SchemaModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return SchemaModel(
-        type: Object.fromJson(json[r'_type']),
+        type: SchemaModelTypeEnum.fromJson(json[r'_type']),
         dependencies: mapValueOfType<Object>(json, r'_dependencies'),
         links: SchemaModelLinks.fromJson(json[r'_links'])!,
       );
@@ -84,7 +89,10 @@ class SchemaModel {
     return null;
   }
 
-  static List<SchemaModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SchemaModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SchemaModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -112,13 +120,19 @@ class SchemaModel {
   }
 
   // maps a json object with a list of SchemaModel-objects as value to a dart map
-  static Map<String, List<SchemaModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SchemaModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SchemaModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SchemaModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SchemaModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -130,7 +144,6 @@ class SchemaModel {
     '_links',
   };
 }
-
 
 class SchemaModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -151,9 +164,13 @@ class SchemaModelTypeEnum {
     schema,
   ];
 
-  static SchemaModelTypeEnum? fromJson(dynamic value) => SchemaModelTypeEnumTypeTransformer().decode(value);
+  static SchemaModelTypeEnum? fromJson(dynamic value) =>
+      SchemaModelTypeEnumTypeTransformer().decode(value);
 
-  static List<SchemaModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SchemaModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SchemaModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -170,7 +187,8 @@ class SchemaModelTypeEnum {
 /// Transformation class that can [encode] an instance of [SchemaModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [SchemaModelTypeEnum].
 class SchemaModelTypeEnumTypeTransformer {
-  factory SchemaModelTypeEnumTypeTransformer() => _instance ??= const SchemaModelTypeEnumTypeTransformer._();
+  factory SchemaModelTypeEnumTypeTransformer() =>
+      _instance ??= const SchemaModelTypeEnumTypeTransformer._();
 
   const SchemaModelTypeEnumTypeTransformer._();
 
@@ -187,7 +205,8 @@ class SchemaModelTypeEnumTypeTransformer {
   SchemaModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Schema': return SchemaModelTypeEnum.schema;
+        case 'Schema':
+          return SchemaModelTypeEnum.schema;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -200,5 +219,3 @@ class SchemaModelTypeEnumTypeTransformer {
   /// Singleton [SchemaModelTypeEnumTypeTransformer] instance.
   static SchemaModelTypeEnumTypeTransformer? _instance;
 }
-
-

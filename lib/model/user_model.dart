@@ -76,44 +76,47 @@ class UserModel {
   UserModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserModel &&
-    other.type == type &&
-    other.id == id &&
-    other.login == login &&
-    other.firstName == firstName &&
-    other.lastName == lastName &&
-    other.name == name &&
-    other.email == email &&
-    other.admin == admin &&
-    other.avatar == avatar &&
-    other.status == status &&
-    other.language == language &&
-    other.identityUrl == identityUrl &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserModel &&
+          other.type == type &&
+          other.id == id &&
+          other.login == login &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.name == name &&
+          other.email == email &&
+          other.admin == admin &&
+          other.avatar == avatar &&
+          other.status == status &&
+          other.language == language &&
+          other.identityUrl == identityUrl &&
+          other.createdAt == createdAt &&
+          other.updatedAt == updatedAt &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (login == null ? 0 : login!.hashCode) +
-    (firstName == null ? 0 : firstName!.hashCode) +
-    (lastName == null ? 0 : lastName!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (email == null ? 0 : email!.hashCode) +
-    (admin == null ? 0 : admin!.hashCode) +
-    (avatar == null ? 0 : avatar!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (language == null ? 0 : language!.hashCode) +
-    (identityUrl == null ? 0 : identityUrl!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (id == null ? 0 : id!.hashCode) +
+      (login == null ? 0 : login!.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (email == null ? 0 : email!.hashCode) +
+      (admin == null ? 0 : admin!.hashCode) +
+      (avatar == null ? 0 : avatar!.hashCode) +
+      (status == null ? 0 : status!.hashCode) +
+      (language == null ? 0 : language!.hashCode) +
+      (identityUrl == null ? 0 : identityUrl!.hashCode) +
+      (createdAt == null ? 0 : createdAt!.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'UserModel[type=$type, id=$id, login=$login, firstName=$firstName, lastName=$lastName, name=$name, email=$email, admin=$admin, avatar=$avatar, status=$status, language=$language, identityUrl=$identityUrl, createdAt=$createdAt, updatedAt=$updatedAt, links=$links]';
+  String toString() =>
+      'UserModel[type=$type, id=$id, login=$login, firstName=$firstName, lastName=$lastName, name=$name, email=$email, admin=$admin, avatar=$avatar, status=$status, language=$language, identityUrl=$identityUrl, createdAt=$createdAt, updatedAt=$updatedAt, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -187,7 +190,7 @@ class UserModel {
     } else {
       json[r'updatedAt'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -203,14 +206,16 @@ class UserModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "UserModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "UserModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "UserModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "UserModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return UserModel(
-        type: Object.fromJson(json[r'_type']),
+        type: UserModelTypeEnum.fromJson(json[r'_type']),
         id: mapValueOfType<Object>(json, r'id'),
         login: mapValueOfType<Object>(json, r'login'),
         firstName: mapValueOfType<Object>(json, r'firstName'),
@@ -230,7 +235,10 @@ class UserModel {
     return null;
   }
 
-  static List<UserModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UserModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -258,13 +266,19 @@ class UserModel {
   }
 
   // maps a json object with a list of UserModel-objects as value to a dart map
-  static Map<String, List<UserModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<UserModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<UserModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UserModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UserModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -279,7 +293,6 @@ class UserModel {
     '_links',
   };
 }
-
 
 class UserModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -300,9 +313,13 @@ class UserModelTypeEnum {
     user,
   ];
 
-  static UserModelTypeEnum? fromJson(dynamic value) => UserModelTypeEnumTypeTransformer().decode(value);
+  static UserModelTypeEnum? fromJson(dynamic value) =>
+      UserModelTypeEnumTypeTransformer().decode(value);
 
-  static List<UserModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UserModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -319,7 +336,8 @@ class UserModelTypeEnum {
 /// Transformation class that can [encode] an instance of [UserModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [UserModelTypeEnum].
 class UserModelTypeEnumTypeTransformer {
-  factory UserModelTypeEnumTypeTransformer() => _instance ??= const UserModelTypeEnumTypeTransformer._();
+  factory UserModelTypeEnumTypeTransformer() =>
+      _instance ??= const UserModelTypeEnumTypeTransformer._();
 
   const UserModelTypeEnumTypeTransformer._();
 
@@ -336,7 +354,8 @@ class UserModelTypeEnumTypeTransformer {
   UserModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'User': return UserModelTypeEnum.user;
+        case 'User':
+          return UserModelTypeEnum.user;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -349,5 +368,3 @@ class UserModelTypeEnumTypeTransformer {
   /// Singleton [UserModelTypeEnumTypeTransformer] instance.
   static UserModelTypeEnumTypeTransformer? _instance;
 }
-
-

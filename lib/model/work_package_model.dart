@@ -107,56 +107,59 @@ class WorkPackageModel {
   WorkPackageModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is WorkPackageModel &&
-    other.id == id &&
-    other.lockVersion == lockVersion &&
-    other.subject == subject &&
-    other.type == type &&
-    other.description == description &&
-    other.scheduleManually == scheduleManually &&
-    other.readonly == readonly &&
-    other.startDate == startDate &&
-    other.dueDate == dueDate &&
-    other.date == date &&
-    other.derivedStartDate == derivedStartDate &&
-    other.derivedDueDate == derivedDueDate &&
-    other.duration == duration &&
-    other.estimatedTime == estimatedTime &&
-    other.derivedEstimatedTime == derivedEstimatedTime &&
-    other.ignoreNonWorkingDays == ignoreNonWorkingDays &&
-    other.spentTime == spentTime &&
-    other.percentageDone == percentageDone &&
-    other.createdAt == createdAt &&
-    other.updatedAt == updatedAt &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is WorkPackageModel &&
+          other.id == id &&
+          other.lockVersion == lockVersion &&
+          other.subject == subject &&
+          other.type == type &&
+          other.description == description &&
+          other.scheduleManually == scheduleManually &&
+          other.readonly == readonly &&
+          other.startDate == startDate &&
+          other.dueDate == dueDate &&
+          other.date == date &&
+          other.derivedStartDate == derivedStartDate &&
+          other.derivedDueDate == derivedDueDate &&
+          other.duration == duration &&
+          other.estimatedTime == estimatedTime &&
+          other.derivedEstimatedTime == derivedEstimatedTime &&
+          other.ignoreNonWorkingDays == ignoreNonWorkingDays &&
+          other.spentTime == spentTime &&
+          other.percentageDone == percentageDone &&
+          other.createdAt == createdAt &&
+          other.updatedAt == updatedAt &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (lockVersion == null ? 0 : lockVersion!.hashCode) +
-    (subject == null ? 0 : subject!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (scheduleManually == null ? 0 : scheduleManually!.hashCode) +
-    (readonly == null ? 0 : readonly!.hashCode) +
-    (startDate == null ? 0 : startDate!.hashCode) +
-    (dueDate == null ? 0 : dueDate!.hashCode) +
-    (date == null ? 0 : date!.hashCode) +
-    (derivedStartDate == null ? 0 : derivedStartDate!.hashCode) +
-    (derivedDueDate == null ? 0 : derivedDueDate!.hashCode) +
-    (duration == null ? 0 : duration!.hashCode) +
-    (estimatedTime == null ? 0 : estimatedTime!.hashCode) +
-    (derivedEstimatedTime == null ? 0 : derivedEstimatedTime!.hashCode) +
-    (ignoreNonWorkingDays == null ? 0 : ignoreNonWorkingDays!.hashCode) +
-    (spentTime == null ? 0 : spentTime!.hashCode) +
-    (percentageDone == null ? 0 : percentageDone!.hashCode) +
-    (createdAt == null ? 0 : createdAt!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id == null ? 0 : id!.hashCode) +
+      (lockVersion == null ? 0 : lockVersion!.hashCode) +
+      (subject == null ? 0 : subject!.hashCode) +
+      (type == null ? 0 : type!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (scheduleManually == null ? 0 : scheduleManually!.hashCode) +
+      (readonly == null ? 0 : readonly!.hashCode) +
+      (startDate == null ? 0 : startDate!.hashCode) +
+      (dueDate == null ? 0 : dueDate!.hashCode) +
+      (date == null ? 0 : date!.hashCode) +
+      (derivedStartDate == null ? 0 : derivedStartDate!.hashCode) +
+      (derivedDueDate == null ? 0 : derivedDueDate!.hashCode) +
+      (duration == null ? 0 : duration!.hashCode) +
+      (estimatedTime == null ? 0 : estimatedTime!.hashCode) +
+      (derivedEstimatedTime == null ? 0 : derivedEstimatedTime!.hashCode) +
+      (ignoreNonWorkingDays == null ? 0 : ignoreNonWorkingDays!.hashCode) +
+      (spentTime == null ? 0 : spentTime!.hashCode) +
+      (percentageDone == null ? 0 : percentageDone!.hashCode) +
+      (createdAt == null ? 0 : createdAt!.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (links.hashCode);
 
   @override
-  String toString() => 'WorkPackageModel[id=$id, lockVersion=$lockVersion, subject=$subject, type=$type, description=$description, scheduleManually=$scheduleManually, readonly=$readonly, startDate=$startDate, dueDate=$dueDate, date=$date, derivedStartDate=$derivedStartDate, derivedDueDate=$derivedDueDate, duration=$duration, estimatedTime=$estimatedTime, derivedEstimatedTime=$derivedEstimatedTime, ignoreNonWorkingDays=$ignoreNonWorkingDays, spentTime=$spentTime, percentageDone=$percentageDone, createdAt=$createdAt, updatedAt=$updatedAt, links=$links]';
+  String toString() =>
+      'WorkPackageModel[id=$id, lockVersion=$lockVersion, subject=$subject, type=$type, description=$description, scheduleManually=$scheduleManually, readonly=$readonly, startDate=$startDate, dueDate=$dueDate, date=$date, derivedStartDate=$derivedStartDate, derivedDueDate=$derivedDueDate, duration=$duration, estimatedTime=$estimatedTime, derivedEstimatedTime=$derivedEstimatedTime, ignoreNonWorkingDays=$ignoreNonWorkingDays, spentTime=$spentTime, percentageDone=$percentageDone, createdAt=$createdAt, updatedAt=$updatedAt, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -260,7 +263,7 @@ class WorkPackageModel {
     } else {
       json[r'updatedAt'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -276,8 +279,10 @@ class WorkPackageModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "WorkPackageModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "WorkPackageModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "WorkPackageModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "WorkPackageModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -286,7 +291,7 @@ class WorkPackageModel {
         id: mapValueOfType<Object>(json, r'id'),
         lockVersion: mapValueOfType<Object>(json, r'lockVersion'),
         subject: mapValueOfType<Object>(json, r'subject'),
-        type: Object.fromJson(json[r'_type']),
+        type: WorkPackageModelTypeEnum.fromJson(json[r'_type']),
         description: WorkPackageModelDescription.fromJson(json[r'description']),
         scheduleManually: mapValueOfType<Object>(json, r'scheduleManually'),
         readonly: mapValueOfType<Object>(json, r'readonly'),
@@ -297,8 +302,10 @@ class WorkPackageModel {
         derivedDueDate: mapValueOfType<Object>(json, r'derivedDueDate'),
         duration: mapValueOfType<Object>(json, r'duration'),
         estimatedTime: mapValueOfType<Object>(json, r'estimatedTime'),
-        derivedEstimatedTime: mapValueOfType<Object>(json, r'derivedEstimatedTime'),
-        ignoreNonWorkingDays: mapValueOfType<Object>(json, r'ignoreNonWorkingDays'),
+        derivedEstimatedTime:
+            mapValueOfType<Object>(json, r'derivedEstimatedTime'),
+        ignoreNonWorkingDays:
+            mapValueOfType<Object>(json, r'ignoreNonWorkingDays'),
         spentTime: mapValueOfType<Object>(json, r'spentTime'),
         percentageDone: mapValueOfType<Object>(json, r'percentageDone'),
         createdAt: mapValueOfType<Object>(json, r'createdAt'),
@@ -309,7 +316,10 @@ class WorkPackageModel {
     return null;
   }
 
-  static List<WorkPackageModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WorkPackageModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <WorkPackageModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -337,13 +347,19 @@ class WorkPackageModel {
   }
 
   // maps a json object with a list of WorkPackageModel-objects as value to a dart map
-  static Map<String, List<WorkPackageModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<WorkPackageModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<WorkPackageModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = WorkPackageModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = WorkPackageModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -355,7 +371,6 @@ class WorkPackageModel {
     '_links',
   };
 }
-
 
 class WorkPackageModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -376,9 +391,13 @@ class WorkPackageModelTypeEnum {
     workPackage,
   ];
 
-  static WorkPackageModelTypeEnum? fromJson(dynamic value) => WorkPackageModelTypeEnumTypeTransformer().decode(value);
+  static WorkPackageModelTypeEnum? fromJson(dynamic value) =>
+      WorkPackageModelTypeEnumTypeTransformer().decode(value);
 
-  static List<WorkPackageModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<WorkPackageModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <WorkPackageModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -395,7 +414,8 @@ class WorkPackageModelTypeEnum {
 /// Transformation class that can [encode] an instance of [WorkPackageModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [WorkPackageModelTypeEnum].
 class WorkPackageModelTypeEnumTypeTransformer {
-  factory WorkPackageModelTypeEnumTypeTransformer() => _instance ??= const WorkPackageModelTypeEnumTypeTransformer._();
+  factory WorkPackageModelTypeEnumTypeTransformer() =>
+      _instance ??= const WorkPackageModelTypeEnumTypeTransformer._();
 
   const WorkPackageModelTypeEnumTypeTransformer._();
 
@@ -412,7 +432,8 @@ class WorkPackageModelTypeEnumTypeTransformer {
   WorkPackageModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'WorkPackage': return WorkPackageModelTypeEnum.workPackage;
+        case 'WorkPackage':
+          return WorkPackageModelTypeEnum.workPackage;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -425,5 +446,3 @@ class WorkPackageModelTypeEnumTypeTransformer {
   /// Singleton [WorkPackageModelTypeEnumTypeTransformer] instance.
   static WorkPackageModelTypeEnumTypeTransformer? _instance;
 }
-
-

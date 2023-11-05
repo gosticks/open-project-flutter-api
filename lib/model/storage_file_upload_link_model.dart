@@ -22,15 +22,16 @@ class StorageFileUploadLinkModel {
   StorageFileUploadLinkModelLinks links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StorageFileUploadLinkModel &&
-    other.type == type &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StorageFileUploadLinkModel &&
+          other.type == type &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (links.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) + (links.hashCode);
 
   @override
   String toString() => 'StorageFileUploadLinkModel[type=$type, links=$links]';
@@ -42,7 +43,7 @@ class StorageFileUploadLinkModel {
     } else {
       json[r'_type'] = null;
     }
-      json[r'_links'] = this.links;
+    json[r'_links'] = this.links;
     return json;
   }
 
@@ -58,21 +59,26 @@ class StorageFileUploadLinkModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "StorageFileUploadLinkModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "StorageFileUploadLinkModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "StorageFileUploadLinkModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "StorageFileUploadLinkModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return StorageFileUploadLinkModel(
-        type: Object.fromJson(json[r'_type']),
+        type: StorageFileUploadLinkModelTypeEnum.fromJson(json[r'_type']),
         links: StorageFileUploadLinkModelLinks.fromJson(json[r'_links'])!,
       );
     }
     return null;
   }
 
-  static List<StorageFileUploadLinkModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageFileUploadLinkModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageFileUploadLinkModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -100,13 +106,19 @@ class StorageFileUploadLinkModel {
   }
 
   // maps a json object with a list of StorageFileUploadLinkModel-objects as value to a dart map
-  static Map<String, List<StorageFileUploadLinkModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<StorageFileUploadLinkModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<StorageFileUploadLinkModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = StorageFileUploadLinkModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = StorageFileUploadLinkModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -118,7 +130,6 @@ class StorageFileUploadLinkModel {
     '_links',
   };
 }
-
 
 class StorageFileUploadLinkModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -139,9 +150,13 @@ class StorageFileUploadLinkModelTypeEnum {
     uploadLink,
   ];
 
-  static StorageFileUploadLinkModelTypeEnum? fromJson(dynamic value) => StorageFileUploadLinkModelTypeEnumTypeTransformer().decode(value);
+  static StorageFileUploadLinkModelTypeEnum? fromJson(dynamic value) =>
+      StorageFileUploadLinkModelTypeEnumTypeTransformer().decode(value);
 
-  static List<StorageFileUploadLinkModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StorageFileUploadLinkModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StorageFileUploadLinkModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -158,7 +173,8 @@ class StorageFileUploadLinkModelTypeEnum {
 /// Transformation class that can [encode] an instance of [StorageFileUploadLinkModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [StorageFileUploadLinkModelTypeEnum].
 class StorageFileUploadLinkModelTypeEnumTypeTransformer {
-  factory StorageFileUploadLinkModelTypeEnumTypeTransformer() => _instance ??= const StorageFileUploadLinkModelTypeEnumTypeTransformer._();
+  factory StorageFileUploadLinkModelTypeEnumTypeTransformer() =>
+      _instance ??= const StorageFileUploadLinkModelTypeEnumTypeTransformer._();
 
   const StorageFileUploadLinkModelTypeEnumTypeTransformer._();
 
@@ -172,10 +188,12 @@ class StorageFileUploadLinkModelTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  StorageFileUploadLinkModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  StorageFileUploadLinkModelTypeEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'UploadLink': return StorageFileUploadLinkModelTypeEnum.uploadLink;
+        case 'UploadLink':
+          return StorageFileUploadLinkModelTypeEnum.uploadLink;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -188,5 +206,3 @@ class StorageFileUploadLinkModelTypeEnumTypeTransformer {
   /// Singleton [StorageFileUploadLinkModelTypeEnumTypeTransformer] instance.
   static StorageFileUploadLinkModelTypeEnumTypeTransformer? _instance;
 }
-
-

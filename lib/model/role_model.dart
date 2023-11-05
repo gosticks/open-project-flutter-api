@@ -38,22 +38,25 @@ class RoleModel {
   RoleModelLinks? links;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RoleModel &&
-    other.type == type &&
-    other.id == id &&
-    other.name == name &&
-    other.links == links;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RoleModel &&
+          other.type == type &&
+          other.id == id &&
+          other.name == name &&
+          other.links == links;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (type == null ? 0 : type!.hashCode) +
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (links == null ? 0 : links!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (type == null ? 0 : type!.hashCode) +
+      (id == null ? 0 : id!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (links == null ? 0 : links!.hashCode);
 
   @override
-  String toString() => 'RoleModel[type=$type, id=$id, name=$name, links=$links]';
+  String toString() =>
+      'RoleModel[type=$type, id=$id, name=$name, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -92,14 +95,16 @@ class RoleModel {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "RoleModel[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "RoleModel[$key]" has a null value in JSON.');
+          assert(json.containsKey(key),
+              'Required key "RoleModel[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "RoleModel[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return RoleModel(
-        type: Object.fromJson(json[r'_type']),
+        type: RoleModelTypeEnum.fromJson(json[r'_type']),
         id: mapValueOfType<Object>(json, r'id'),
         name: mapValueOfType<Object>(json, r'name'),
         links: RoleModelLinks.fromJson(json[r'_links']),
@@ -108,7 +113,10 @@ class RoleModel {
     return null;
   }
 
-  static List<RoleModel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RoleModel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <RoleModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -136,13 +144,19 @@ class RoleModel {
   }
 
   // maps a json object with a list of RoleModel-objects as value to a dart map
-  static Map<String, List<RoleModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<RoleModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<RoleModel>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = RoleModel.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = RoleModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -153,7 +167,6 @@ class RoleModel {
     'name',
   };
 }
-
 
 class RoleModelTypeEnum {
   /// Instantiate a new enum with the provided [value].
@@ -174,9 +187,13 @@ class RoleModelTypeEnum {
     role,
   ];
 
-  static RoleModelTypeEnum? fromJson(dynamic value) => RoleModelTypeEnumTypeTransformer().decode(value);
+  static RoleModelTypeEnum? fromJson(dynamic value) =>
+      RoleModelTypeEnumTypeTransformer().decode(value);
 
-  static List<RoleModelTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RoleModelTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <RoleModelTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -193,7 +210,8 @@ class RoleModelTypeEnum {
 /// Transformation class that can [encode] an instance of [RoleModelTypeEnum] to Object,
 /// and [decode] dynamic data back to [RoleModelTypeEnum].
 class RoleModelTypeEnumTypeTransformer {
-  factory RoleModelTypeEnumTypeTransformer() => _instance ??= const RoleModelTypeEnumTypeTransformer._();
+  factory RoleModelTypeEnumTypeTransformer() =>
+      _instance ??= const RoleModelTypeEnumTypeTransformer._();
 
   const RoleModelTypeEnumTypeTransformer._();
 
@@ -210,7 +228,8 @@ class RoleModelTypeEnumTypeTransformer {
   RoleModelTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 'Role': return RoleModelTypeEnum.role;
+        case 'Role':
+          return RoleModelTypeEnum.role;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -223,5 +242,3 @@ class RoleModelTypeEnumTypeTransformer {
   /// Singleton [RoleModelTypeEnumTypeTransformer] instance.
   static RoleModelTypeEnumTypeTransformer? _instance;
 }
-
-
